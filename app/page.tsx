@@ -9,6 +9,8 @@ import ProfessionalAffiliations from "@/components/ProfessionalAffiliations";
 import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm";
 
+export const dynamic = "force-static";
+
 export default function Home() {
   return (
     <main className="min-h-screen">
