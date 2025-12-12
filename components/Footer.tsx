@@ -259,7 +259,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gray-800 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                className="w-12 h-12 bg-gray-800 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
                 aria-label="Facebook"
               >
                 <svg
@@ -274,7 +274,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gray-800 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                className="w-12 h-12 bg-gray-800 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
                 aria-label="Twitter"
               >
                 <svg
@@ -289,7 +289,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gray-800 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                className="w-12 h-12 bg-gray-800 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
                 aria-label="LinkedIn"
               >
                 <svg

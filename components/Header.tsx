@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { Image, Button, Text } from "@/components/common";
 import { useState } from "react";
 
 export default function Header() {
@@ -44,7 +44,8 @@ export default function Header() {
             alt="Pollak PLLC Logo"
             width={150}
             height={75}
-            className="h-9 sm:h-11 md:h-12 w-auto object-contain"
+            objectFit="contain"
+            className="h-9 sm:h-11 md:h-12 w-auto"
             priority
           />
         </a>
@@ -96,9 +97,13 @@ export default function Header() {
 
       {/* Desktop CTA Button */}
       <div className="hidden lg:flex items-center gap-4 shrink-0">
-        <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 whitespace-nowrap text-sm uppercase tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+        <Button
+          variant="primary"
+          size="medium"
+          className="whitespace-nowrap text-sm uppercase tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+        >
           BOOK YOUR MEETING
-        </button>
+        </Button>
       </div>
 
       {/* Mobile Menu Button */}
@@ -193,12 +198,14 @@ export default function Header() {
               >
                 Contact Us
               </a>
-              <button
-                className="mt-6 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 text-sm uppercase tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer w-full"
+              <Button
+                variant="primary"
+                size="medium"
                 onClick={toggleMobileMenu}
+                className="mt-6 text-sm uppercase tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 w-full"
               >
                 BOOK YOUR MEETING
-              </button>
+              </Button>
             </div>
           </nav>
         </>

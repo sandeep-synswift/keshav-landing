@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
+import { Button, Text, Image as DefaultImage } from "@/components/common";
 
 export default function About() {
   return (
@@ -19,35 +18,43 @@ export default function About() {
           {/* Left Panel - Text Content */}
           <div className="order-2 lg:order-1 col-span-2">
             {/* Headline */}
-            <h2 className="text-4xl md:text-5xl font-medium mb-8 leading-tight max-w-3xl">
+            <Text
+              as="h2"
+              size="4xl"
+              color="white"
+              className="md:text-5xl font-medium mb-8 leading-tight max-w-3xl"
+            >
               We don't sell dreams, we sell success
-            </h2>
+            </Text>
 
             {/* Body Text */}
-            <div className="space-y-6 mb-10 text-gray-200 text-md sm:text-sm leading-relaxed">
-              <p>
+            <div className="space-y-6 mb-10 text-gray-200 leading-relaxed">
+              <Text as="p" size="sm" color="white" className="opacity-80">
                 Navigating the immigration system on your own can be an incredibly complicated and time-consuming process. Getting even one small detail wrong can result in your application being delayed or denied – Let our knowledgeable immigration lawyers help you!
-              </p>
-              <p>
+              </Text>
+              <Text as="p" size="sm" color="white" className="opacity-80">
                 We exclusively practice immigration law and are at the forefront of key issues and trends in American immigration law and regulations.
-              </p>
-              <p>
+              </Text>
+              <Text as="p" size="sm" color="white" className="opacity-80">
                 Let's discuss the specifics of your case so you understand all your options and know exactly how to reach your goals.
-              </p>
+              </Text>
             </div>
 
             {/* About Text */}
-            <div className="mb-10 text-gray-200 text-md sm:text-sm leading-relaxed">
-              <p>
+            <div className="mb-10 text-gray-200 leading-relaxed">
+              <Text as="p" size="sm" color="white" className="opacity-80">
                 Avvocats & Partners is a US-based immigration law firm helping individuals and families secure their future in the United States. Our team specializes in asylum cases and marriage-based green card petitions, offering personalized, compassionate, and result-driven legal support to Indian, South Asian, and Hispanic communities.
-              </p>
+              </Text>
             </div>
 
             {/* CTA Button */}
-            <Link
+            <Button
+              as="link"
               href="#contact-us"
-              onClick={(e) => {
-                e.preventDefault();
+              variant="primary"
+              size="large"
+              onClick={(e?: React.MouseEvent<HTMLElement>) => {
+                e?.preventDefault();
                 const element = document.getElementById("contact-us");
                 if (element) {
                   const headerOffset = 80;
@@ -59,7 +66,7 @@ export default function About() {
                   });
                 }
               }}
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-lg text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               <svg
                 className="w-6 h-6"
@@ -75,29 +82,35 @@ export default function About() {
                 />
               </svg>
               SET UP YOUR CASE EVALUATION
-            </Link>
+            </Button>
           </div>
 
           {/* Right Panel - Image */}
           <div className="order-1 lg:order-2">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+            <div className="relative overflow-hidden shadow-2xl group">
               {/* Team/Office Image */}
               <div className="relative w-full h-[250px] sm:h-[550px] lg:h-[450px] overflow-hidden">
-                <Image
+                <DefaultImage
                   src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80"
                   alt="Avvocats LLP Team"
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  priority={false}
+                  objectFit="cover"
+                  hoverEffect
+                  className="w-full h-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
 
               {/* Caption Strip */}
               <div className="bg-gradient-to-r from-orange-600 to-orange-700 px-8 py-5">
-                <p className="text-white text-center text-lg sm:text-xl font-semibold">
+                <Text
+                  as="p"
+                  size="xl"
+                  color="white"
+                  className="text-center font-semibold"
+                >
                   Led by experienced attorneys serving clients across the United States
-                </p>
+                </Text>
               </div>
             </div>
           </div>
@@ -106,3 +119,4 @@ export default function About() {
     </section>
   );
 }
+

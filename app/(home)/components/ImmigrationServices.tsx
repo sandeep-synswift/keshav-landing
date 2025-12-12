@@ -47,7 +47,7 @@ export default function ImmigrationServices() {
                   });
                 }
               }}
-              className="group bg-white rounded-md overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+              className="group bg-white overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
             >
               {/* Service Image - fills entire top area */}
               <div className="relative w-full h-72 sm:h-80 md:h-96 overflow-hidden">
@@ -80,3 +80,4 @@ export default function ImmigrationServices() {
     </section>
   );
 }
+

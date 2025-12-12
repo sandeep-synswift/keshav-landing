@@ -37,7 +37,8 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="relative py-20 sm:py-24 lg:py-28 overflow-hidden scroll-mt-20">
+    <section id="testimonials" className="relative py-20 sm:py-24 lg:py-28 
+    overflow-hidden scroll-mt-20">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -67,20 +68,12 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 flex flex-col transform hover:-translate-y-2 border-2 border-transparent hover:border-orange-500/30"
+              className="bg-white p-8 shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 flex flex-col transform hover:-translate-y-2 border-2 border-transparent hover:border-orange-500/30"
             >
-              {/* Profile Picture */}
-              <div className="flex justify-center mb-6">
-                <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-orange-500/20 shadow-lg">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover"
-                    priority={index < 2}
-                  />
-                </div>
-              </div>
+              {/* Quote */}
+              <p className="text-gray-700 text-sm leading-relaxed mb-8 italic">
+                "{testimonial.quote}"
+              </p>
 
               {/* Star Rating */}
               <div className="flex justify-center gap-1 mb-6">
@@ -95,12 +88,6 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </div>
-
-              {/* Quote */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-8 italic">
-                "{testimonial.quote}"
-              </p>
-
               {/* Attribution */}
               <div className="text-center pt-6 border-t-2 border-gray-100">
                 <p className="text-gray-900 font-bold text-lg sm:text-xl">
@@ -113,6 +100,8 @@ export default function Testimonials() {
                   {testimonial.date}
                 </p>
               </div>
+
+
             </div>
           ))}
         </div>

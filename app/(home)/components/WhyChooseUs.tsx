@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Text, Image as DefaultImage } from "@/components/common";
 
 export default function WhyChooseUs() {
   const features = [
@@ -33,12 +33,22 @@ export default function WhyChooseUs() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl md:text-5xl font-medium text-gray-900 mb-6 leading-tight max-w-3xl mx-auto">
+          <Text
+            as="h2"
+            size="4xl"
+            color="default"
+            className="md:text-5xl font-medium mb-6 leading-tight max-w-3xl mx-auto"
+          >
             Why Hundreds Trust Avvocats LLP for Immigration Help
-          </h2>
-          <p className="text-sm sm:text-md text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          </Text>
+          <Text
+            as="p"
+            size="base"
+            color="muted"
+            className="max-w-3xl mx-auto leading-relaxed"
+          >
             With many immigration firms to choose from, why consider Avvocats LLP? Here are a few reasons:
-          </p>
+          </Text>
         </div>
 
         {/* Feature Cards */}
@@ -46,30 +56,41 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white border-2 border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full group hover:border-orange-500/50"
+              className="bg-white border-2 border-gray-100 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full group hover:border-orange-500/50"
             >
               {/* Image */}
               <div className="mb-6 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                 <div className="relative w-20 h-20 mx-auto">
-                  <Image
+                  <DefaultImage
                     src={feature.image}
                     alt={feature.title}
                     fill
-                    className="object-contain"
+                    objectFit="contain"
+                    className="w-full h-full"
                     priority={index < 2}
                   />
                 </div>
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl sm:text-3xl font-bold mb-4 flex-shrink-0 text-gray-900 group-hover:text-orange-600 transition-colors">
+              <Text
+                as="h5"
+                size="xl"
+                color="default"
+                className="sm:text-md font-bold mb-4 flex-shrink-0 group-hover:text-orange-600 transition-colors"
+              >
                 {feature.title}
-              </h3>
+              </Text>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed flex-grow text-base sm:text-lg">
+              <Text
+                as="p"
+                size="lg"
+                color="muted"
+                className="leading-relaxed flex-grow"
+              >
                 {feature.description}
-              </p>
+              </Text>
             </div>
           ))}
         </div>
@@ -77,3 +98,4 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+

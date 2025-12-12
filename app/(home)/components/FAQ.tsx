@@ -51,7 +51,7 @@ export default function FAQ() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl overflow-hidden transition-all duration-300 border-2 border-gray-100 hover:border-orange-500/50"
+                className="bg-white shadow-lg hover:shadow-xl overflow-hidden transition-all duration-300 border-2 border-gray-100 hover:border-orange-500/50"
               >
                 {/* Question Button */}
                 <button
@@ -98,3 +98,4 @@ export default function FAQ() {
     </section>
   );
 }
+

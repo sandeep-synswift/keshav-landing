@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Button, Text } from "@/components/common";
 
 export default function Hero() {
   return (
@@ -18,33 +18,51 @@ export default function Hero() {
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/10 blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="max-w-5xl mx-auto text-center">
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-5xl font-medium text-white mb-1 leading-tight drop-shadow-2xl animate-fade-in max-w-3xl mx-auto">
+          <Text
+            as="h1"
+            size="4xl"
+            color="white"
+            className="md:text-5xl font-medium mb-1 leading-tight drop-shadow-2xl animate-fade-in max-w-3xl mx-auto"
+          >
             Trusted Immigration Lawyers in California
-          </h1>
-          <span className="block text-base sm:text-lg mt-4 text-orange-400 font-medium tracking-wide">
+          </Text>
+          <Text
+            as="span"
+            size="lg"
+            color="primary"
+            className="block mt-4 font-medium tracking-wide"
+          >
             — Helping You Build a Secure Future in the U.S.
-          </span>
+          </Text>
 
           {/* Subheadline */}
-          <p className="text-sm sm:text-md text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg mt-8">
+          <Text
+            as="p"
+            size="base"
+            color="white"
+            className="mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg mt-8"
+          >
             Expert Legal Assistance for Asylum & Marriage-Based Green Cards —
             <span className="text-orange-300 font-semibold"> Personalized Support for Indian & South Asian Clients.</span>
-          </p>
+          </Text>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16">
-            <Link
+            <Button
+              as="link"
               href="#contact-us"
-              onClick={(e) => {
-                e.preventDefault();
+              variant="primary"
+              size="large"
+              onClick={(e?: React.MouseEvent<HTMLElement>) => {
+                e?.preventDefault();
                 const element = document.getElementById("contact-us");
                 if (element) {
                   const headerOffset = 80;
@@ -56,13 +74,16 @@ export default function Hero() {
                   });
                 }
               }}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-lg text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto text-center"
+              className="w-full sm:w-auto text-center shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Schedule Free Consultation
-            </Link>
-            <a
+            </Button>
+            <Button
+              as="link"
               href="tel:+1234567890"
-              className="bg-white/95 hover:bg-white text-slate-900 font-bold px-8 py-4 rounded-lg text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto flex items-center justify-center gap-3"
+              variant="whiteOutline"
+              size="large"
+              className="w-full sm:w-auto gap-3 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               <svg
                 className="w-6 h-6"
@@ -78,22 +99,22 @@ export default function Hero() {
                 />
               </svg>
               Call Now
-            </a>
+            </Button>
           </div>
 
           {/* Trust Icons */}
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-10 md:gap-14 pt-12 border-t border-white/20">
             {/* USCIS Logo Placeholder */}
             <div className="flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300 group">
-              <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+              <div className="w-16 h-16 bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
                 <span className="text-sm font-bold text-orange-400">USCIS</span>
               </div>
-              <span className="text-sm font-semibold">USCIS Certified</span>
+              <Text size="sm" color="white" className="font-semibold">USCIS Certified</Text>
             </div>
 
             {/* Licensed Immigration Attorneys */}
             <div className="flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300 group">
-              <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+              <div className="w-14 h-14 bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
                 <svg
                   className="w-6 h-6 text-orange-400"
                   fill="none"
@@ -108,12 +129,12 @@ export default function Hero() {
                   />
                 </svg>
               </div>
-              <span className="text-sm font-semibold">Licensed Immigration Attorneys</span>
+              <Text size="sm" color="white" className="font-semibold">Licensed Immigration Attorneys</Text>
             </div>
 
             {/* Serving California */}
             <div className="flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300 group">
-              <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+              <div className="w-14 h-14 bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
                 <svg
                   className="w-6 h-6 text-orange-400"
                   fill="none"
@@ -134,16 +155,19 @@ export default function Hero() {
                   />
                 </svg>
               </div>
-              <span className="text-sm font-semibold">Serving California for 15+ Years</span>
+              <Text size="sm" color="white" className="font-semibold">Serving California for 15+ Years</Text>
             </div>
           </div>
         </div>
       </div>
 
       {/* Sticky Call Button for Mobile */}
-      <a
+      <Button
+        as="link"
         href="tel:+1234567890"
-        className="fixed bottom-6 right-6 lg:hidden z-50 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center gap-2"
+        variant="primary"
+        size="medium"
+        className="fixed bottom-6 right-6 lg:hidden z-50 px-6 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
       >
         <svg
           className="w-5 h-5"
@@ -158,8 +182,9 @@ export default function Hero() {
             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
           />
         </svg>
-        <span className="text-sm">Call</span>
-      </a>
+        <Text size="sm">Call</Text>
+      </Button>
     </section>
   );
 }
+
