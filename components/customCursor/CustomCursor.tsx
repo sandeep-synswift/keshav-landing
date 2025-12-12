@@ -67,8 +67,14 @@ export default function CustomCursor() {
       const isInteractive = 
         target.tagName === 'A' ||
         target.tagName === 'BUTTON' ||
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'SELECT' ||
         target.closest('a') ||
         target.closest('button') ||
+        target.closest('input') ||
+        target.closest('textarea') ||
+        target.closest('select') ||
         target.closest('[role="button"]') ||
         target.closest('[data-cursor-hover]') ||
         (target instanceof Element && window.getComputedStyle(target).cursor === 'pointer');
