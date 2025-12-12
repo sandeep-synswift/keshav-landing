@@ -1,6 +1,18 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
+// Helper function to escape HTML entities for security
+function escapeHtml(text: string): string {
+  const map: { [key: string]: string } = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Check if API key is configured
@@ -25,6 +37,13 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Sanitize inputs to prevent XSS
+    const sanitizedName = escapeHtml(name.trim());
+    const sanitizedEmail = escapeHtml(email.trim());
+    const sanitizedPhone = phone ? escapeHtml(phone.trim()) : '';
+    const sanitizedService = escapeHtml(service.trim());
+    const sanitizedMessage = escapeHtml(message.trim()).replace(/\n/g, '<br>');
 
     // Email content
     const emailHtml = `
@@ -51,25 +70,25 @@ export async function POST(request: NextRequest) {
             <div class="content">
               <div class="field">
                 <div class="label">Name:</div>
-                <div class="value">${name}</div>
+                <div class="value">${sanitizedName}</div>
               </div>
               <div class="field">
                 <div class="label">Email:</div>
-                <div class="value">${email}</div>
+                <div class="value">${sanitizedEmail}</div>
               </div>
-              ${phone ? `
+              ${sanitizedPhone ? `
               <div class="field">
                 <div class="label">Phone:</div>
-                <div class="value">${phone}</div>
+                <div class="value">${sanitizedPhone}</div>
               </div>
               ` : ''}
               <div class="field">
                 <div class="label">Service:</div>
-                <div class="value">${service}</div>
+                <div class="value">${sanitizedService}</div>
               </div>
               <div class="field">
                 <div class="label">Message:</div>
-                <div class="value">${message.replace(/\n/g, '<br>')}</div>
+                <div class="value">${sanitizedMessage}</div>
               </div>
             </div>
             <div class="footer">
@@ -84,9 +103,9 @@ export async function POST(request: NextRequest) {
     const { data, error } = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>", // You'll need to verify your domain with Resend
       to: ["sandeepmaan02@gmail.com"],
-      subject: `New Contact Form Submission - ${service}`,
+      subject: `New Contact Form Submission - ${sanitizedService}`,
       html: emailHtml,
-      replyTo: email, // This allows you to reply directly to the user
+      replyTo: email.trim(), // This allows you to reply directly to the user
     });
 
     if (error) {
