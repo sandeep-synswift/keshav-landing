@@ -15,18 +15,6 @@ function escapeHtml(text: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if API key is configured
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "Email service is not configured. Please set RESEND_API_KEY in your environment variables." },
-        { status: 500 }
-      );
-    }
-
-    // Initialize Resend with API key
-    const resend = new Resend(apiKey);
-
     const body = await request.json();
     const { name, email, phone, service, message } = body;
 
@@ -44,6 +32,29 @@ export async function POST(request: NextRequest) {
     const sanitizedPhone = phone ? escapeHtml(phone.trim()) : '';
     const sanitizedService = escapeHtml(service.trim());
     const sanitizedMessage = escapeHtml(message.trim()).replace(/\n/g, '<br>');
+
+    // Check if API key is configured
+    const apiKey = process.env.RESEND_API_KEY;
+    
+    if (!apiKey) {
+      // If no API key, just log the form data and return success
+      // This allows the form to work without email service configured
+      console.log("Contact Form Submission (Email service not configured):", {
+        name: sanitizedName,
+        email: sanitizedEmail,
+        phone: sanitizedPhone,
+        service: sanitizedService,
+        message: sanitizedMessage,
+      });
+      
+      return NextResponse.json(
+        { message: "Form submitted successfully. Email service not configured." },
+        { status: 200 }
+      );
+    }
+
+    // Initialize Resend with API key and send email
+    const resend = new Resend(apiKey);
 
     // Email content
     const emailHtml = `
