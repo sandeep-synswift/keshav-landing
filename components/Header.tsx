@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { Image, Button, Text } from "@/components/common";
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
+import { useModal } from "@/contexts/ModalContext";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { openModal } = useModal();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -100,6 +103,7 @@ export default function Header() {
         <Button
           variant="primary"
           size="medium"
+          onClick={openModal}
           className="whitespace-nowrap text-sm uppercase tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           BOOK YOUR MEETING
@@ -142,19 +146,7 @@ export default function Header() {
                 className="absolute top-4 right-4 p-2 text-gray-700 hover:text-orange-500 transition-colors"
                 aria-label="Close menu"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <FaTimes className="w-6 h-6" />
               </button>
               <a
                 href="#practice-areas"
@@ -201,7 +193,10 @@ export default function Header() {
               <Button
                 variant="primary"
                 size="medium"
-                onClick={toggleMobileMenu}
+                onClick={() => {
+                  openModal();
+                  toggleMobileMenu();
+                }}
                 className="mt-6 text-sm uppercase tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 w-full"
               >
                 BOOK YOUR MEETING

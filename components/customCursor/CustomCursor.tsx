@@ -120,7 +120,7 @@ export default function CustomCursor() {
       {/* Outer circle (trailing effect) */}
       <div
         ref={cursorRef}
-        className="fixed pointer-events-none z-[9999] mix-blend-difference will-change-transform"
+        className="fixed pointer-events-none z-[10000] mix-blend-difference will-change-transform"
         style={{
           left: 0,
           top: 0,
@@ -139,7 +139,7 @@ export default function CustomCursor() {
       {/* Inner dot (main cursor) */}
       <div
         ref={cursorDotRef}
-        className="fixed pointer-events-none z-[9999] mix-blend-difference will-change-transform"
+        className="fixed pointer-events-none z-[10000] mix-blend-difference will-change-transform"
         style={{
           left: 0,
           top: 0,

@@ -1,30 +1,37 @@
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
+import SectionHeading from "@/components/sectionHeading/SectionHeading";
 
 export default function HowItWorks() {
   const steps = [
     {
       image: "/assets/photos/how-work/free-consultation.png",
-      title: "Free Consultation",
-      description:
-        "Discuss your situation with an expert. We'll assess your case, answer your questions, and outline the best path forward for your immigration goals.",
+      title: "Step 1 – Free WhatsApp Intake",
+      description: [
+        "Send a confidential message",
+        "Answer 5 simple screening questions:",
+        "• Current visa type and expiration date",
+        "• Entry date into the U.S.",
+        "• Reason for contacting us (Marriage GC / Overstay / Asylum)",
+        "• Any past immigration filings or denials?",
+        "• City/state of residence in the U.S."
+      ],
     },
     {
       image: "/assets/photos/how-work/case-preparation.png",
-      title: "Case Preparation",
-      description:
-        "We handle all paperwork and filings. Our team ensures every document is properly prepared, filed on time, and meets all USCIS requirements.",
+      title: "Step 2 – Attorney Consultation ($250/hr)",
+      description: [
+        "Detailed legal analysis",
+        "Step-by-step strategy & filing roadmap"
+      ],
     },
     {
       image: "/assets/photos/how-work/representation.png",
-      title: "Representation",
-      description:
-        "Get full support in USCIS or court. We represent you at interviews, hearings, and all legal proceedings, ensuring your rights are protected.",
-    },
-    {
-      image: "/assets/photos/how-work/success.png",
-      title: "Successful Outcome",
-      description:
-        "Move closer to your U.S. residency goals. With our expertise and dedicated support, we work tirelessly to achieve the best possible outcome for your case.",
+      title: "Step 3 – Safe, Compliant Filing",
+      description: [
+        "Only proceed if intake confirms viability",
+        "All submissions are carefully prepared"
+      ],
     },
   ];
 
@@ -33,16 +40,16 @@ export default function HowItWorks() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="mb-16 sm:mb-20">
-          <h2 className="text-4xl md:text-5xl font-medium text-gray-900 mb-4 leading-tight max-w-3xl">
-            How it Works
-          </h2>
-          <p className="text-sm sm:text-md text-gray-700 font-medium">
-            Your Immigration Process — Made Simple
-          </p>
+          <SectionHeading
+            as="h2"
+            className="text-4xl md:text-5xl text-gray-900 mb-4 leading-tight max-w-3xl"
+          >
+            How Our WhatsApp-First Process Works
+          </SectionHeading>
         </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {steps.map((step, index) => (
             <div key={index} className="flex flex-col group">
               {/* Icon */}
@@ -59,14 +66,24 @@ export default function HowItWorks() {
               </div>
 
               {/* Title */}
-              <h3 className="text-3xl sm:text-2xl font-medium text-gray-900 mb-6 group-hover:text-orange-600 transition-colors">
+              <h3 className="text-2xl sm:text-xl font-medium text-gray-900 mb-6 group-hover:text-orange-600 transition-colors">
                 {step.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 text-lg sm:text-sm leading-relaxed">
-                {step.description}
-              </p>
+              <div className="text-gray-600 text-base sm:text-sm leading-relaxed">
+                {Array.isArray(step.description) ? (
+                  <ul className="space-y-2">
+                    {step.description.map((item, idx) => (
+                      <li key={idx} className={item.startsWith('•') ? 'pl-4' : ''}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{step.description}</p>
+                )}
+              </div>
             </div>
           ))}
         </div>

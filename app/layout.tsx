@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/customCursor/CustomCursor";
+import { ModalProvider } from "@/contexts/ModalContext";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  weight: ["300", "400", "500", "600", "700", "800"],
+const outfit = Outfit({
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -24,12 +25,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakartaSans.variable} antialiased font-sans`}
+        className={`${outfit.variable} antialiased font-sans`}
       >
-        <CustomCursor />
-        <Header />
-        {children}
-        <Footer />
+        <ModalProvider>
+          <CustomCursor />
+          <Header />
+          {children}
+          <Footer />
+        </ModalProvider>
       </body>
     </html>
   );

@@ -2,16 +2,39 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
+import SectionHeading from "@/components/sectionHeading/SectionHeading";
 
 export default function ImmigrationServices() {
   const services = [
     {
-      title: "Asylum Services",
+      title: "Marriage-Based Green Card",
+      description: [
+        "Adjustment of Status (I-130 + I-485)",
+        "Overstay & work authorization considerations",
+        "Interview preparation and RFEs"
+      ],
+      image: "/assets/photos/our-services/marriage-based green-ard.png",
+    },
+    {
+      title: "B1/B2 Overstay / Extension / Change of Status",
+      description: [
+        "Legal assessment of overstay risks",
+        "Extension or change of status options",
+        "Protection against unlawful presence bars"
+      ],
       image: "/assets/photos/our-services/asylum-services.png",
     },
     {
-      title: "Marriage-Based Green Card / Petition",
-      image: "/assets/photos/our-services/marriage-based green-ard.png",
+      title: "Asylum & Humanitarian Protection",
+      subtitle: "(Selective Intake Only)",
+      description: [
+        "Affirmative and defensive asylum cases",
+        "One-year filing deadline assessment",
+        "Country condition documentation",
+        "Credibility and strategy evaluation"
+      ],
+      image: "/assets/photos/our-services/asylum-services.png",
     },
   ];
 
@@ -20,16 +43,16 @@ export default function ImmigrationServices() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl md:text-5xl font-medium text-gray-900 mb-6 leading-tight max-w-3xl mx-auto">
-            Our Immigration Services
-          </h2>
-          <p className="text-sm sm:text-md text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We assist clients with a wide array of immigration matters, ensuring dedicated legal representation in even the most challenging cases. Here are some of the services we provide:
-          </p>
+          <SectionHeading
+            as="h2"
+            className="text-4xl md:text-5xl text-gray-900 mb-6 leading-tight max-w-3xl mx-auto"
+          >
+            Services We Specialize In
+          </SectionHeading>
         </div>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <Link
               key={index}
@@ -61,20 +84,40 @@ export default function ImmigrationServices() {
                 {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-300"></div> */}
               </div>
 
-              {/* Service Title - directly below image, centered */}
+              {/* Service Title and Description - directly below image, centered */}
               <div className="py-8 px-6 text-center from-white to-gray-50">
-                <h3 className="text-xl font-normal text-gray-900 group-hover:text-orange-600 transition-colors">
+                <h3 className="text-xl font-normal text-gray-900 group-hover:text-orange-600 transition-colors mb-2">
                   {service.title}
                 </h3>
-                <div className="mt-4 inline-flex items-center gap-2 text-orange-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span>Learn More</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
+                {service.subtitle && (
+                  <p className="text-sm text-gray-500 mb-4 italic">{service.subtitle}</p>
+                )}
+                {service.description && (
+                  <ul className="mt-4 text-left space-y-2">
+                    {service.description.map((item, idx) => (
+                      <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                        <span className="text-orange-500 mt-1">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </Link>
           ))}
+        </div>
+        
+        {/* CTA after services */}
+        <div className="text-center mt-12">
+          <Link
+            href="https://wa.me/13105000780"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold"
+          >
+            <FaWhatsapp className="w-6 h-6" />
+            Start Free WhatsApp Intake → Immediate Screening
+          </Link>
         </div>
       </div>
     </section>

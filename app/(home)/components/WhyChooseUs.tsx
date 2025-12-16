@@ -1,58 +1,55 @@
 import { Text, Image as DefaultImage } from "@/components/common";
+import SectionHeading from "@/components/sectionHeading/SectionHeading";
 
 export default function WhyChooseUs() {
   const features = [
     {
       image: "/assets/photos/why-choose/experienced-immigration.png",
-      title: "Experienced Immigration Attorneys",
+      title: "30+ years combined U.S. immigration expertise",
       description:
-        "Specializing in Asylum & Marriage-Based Petitions. Our team brings years of dedicated experience in immigration law to help you navigate complex legal processes with confidence.",
+        "Our team brings decades of dedicated experience in immigration law to help you navigate complex legal processes with confidence.",
     },
     {
       image: "/assets/photos/why-choose/multilingual-support.png",
-      title: "Multilingual Support",
+      title: "Specialized in Indian immigrant cases",
       description:
-        "Hindi, Punjabi, Haryanvi & English. We understand that clear communication is crucial. Our team speaks your language, ensuring you fully understand your options and legal rights.",
+        "We understand the unique challenges and opportunities facing Indian nationals in the U.S. immigration system.",
     },
     {
       image: "/assets/photos/why-choose/local-expertise.png",
-      title: "Local Expertise",
+      title: "Ethical, transparent, and client-focused",
       description:
-        "Serving Los Angeles & Southern California. Deep knowledge of local immigration courts, USCIS offices, and regional procedures ensures the best possible outcome for your case.",
+        "We guide you step-by-step. No false promises – every solution is legally sound and ethically delivered.",
     },
     {
       image: "/assets/photos/why-choose/free-initial-consultation.png",
-      title: "Free Initial Consultation",
+      title: "Direct attorney involvement after intake",
       description:
-        "Get Legal Advice Before You File. Start your immigration journey with confidence. Schedule a free consultation to discuss your case and explore your options with no obligation.",
+        "After your free WhatsApp intake, you work directly with experienced attorneys who provide personalized legal guidance.",
+    },
+    {
+      image: "/assets/photos/why-choose/local-expertise.png",
+      title: "Nationwide service in Indian-populated metros",
+      description:
+        "We serve clients across major U.S. cities with high Indian populations. Remote consultations available via WhatsApp-first approach.",
     },
   ];
 
   return (
-    <section id="why-choose-us" className="bg-gradient-to-b from-gray-50 to-white py-20 sm:py-24 lg:py-28 scroll-mt-20">
+    <section id="why-choose-us" className="bg-white py-20 sm:py-24 lg:py-28 scroll-mt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16 sm:mb-20">
-          <Text
+          <SectionHeading
             as="h2"
-            size="4xl"
-            color="default"
-            className="md:text-5xl font-medium mb-6 leading-tight max-w-3xl mx-auto"
+            className="text-4xl md:text-5xl mb-6 leading-tight max-w-3xl mx-auto text-gray-900"
           >
-            Why Hundreds Trust Avvocats LLP for Immigration Help
-          </Text>
-          <Text
-            as="p"
-            size="base"
-            color="muted"
-            className="max-w-3xl mx-auto leading-relaxed"
-          >
-            With many immigration firms to choose from, why consider Avvocats LLP? Here are a few reasons:
-          </Text>
+            Why Choose Avvocats & Partners
+          </SectionHeading>
         </div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -93,6 +90,18 @@ export default function WhyChooseUs() {
               </Text>
             </div>
           ))}
+        </div>
+        
+        {/* Additional Note */}
+        <div className="text-center mt-12">
+          <Text
+            as="p"
+            size="base"
+            color="muted"
+            className="max-w-3xl mx-auto leading-relaxed italic"
+          >
+            We focus on serious cases to provide high-quality legal guidance.
+          </Text>
         </div>
       </div>
     </section>

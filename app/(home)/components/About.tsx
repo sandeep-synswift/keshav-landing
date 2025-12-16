@@ -1,6 +1,8 @@
 "use client";
 
 import { Button, Text, Image as DefaultImage } from "@/components/common";
+import { FaWhatsapp } from "react-icons/fa";
+import SectionHeading from "@/components/sectionHeading/SectionHeading";
 
 export default function About() {
   return (
@@ -18,70 +20,74 @@ export default function About() {
           {/* Left Panel - Text Content */}
           <div className="order-2 lg:order-1 col-span-2">
             {/* Headline */}
-            <Text
+            <SectionHeading
               as="h2"
-              size="4xl"
-              color="white"
-              className="md:text-5xl font-medium mb-8 leading-tight max-w-3xl"
+              className="text-4xl md:text-5xl text-white mb-8 leading-tight max-w-3xl"
             >
-              We don't sell dreams, we sell success
-            </Text>
+              Why Indian Immigrants Contact Us
+            </SectionHeading>
 
             {/* Body Text */}
             <div className="space-y-6 mb-10 text-gray-200 leading-relaxed">
-              <Text as="p" size="sm" color="white" className="opacity-80">
-                Navigating the immigration system on your own can be an incredibly complicated and time-consuming process. Getting even one small detail wrong can result in your application being delayed or denied – Let our knowledgeable immigration lawyers help you!
+            <Text as="p" size="sm" color="white" className="opacity-90 font-medium">
+              Overstayed your visa? Unsure about your status?
               </Text>
-              <Text as="p" size="sm" color="white" className="opacity-80">
-                We exclusively practice immigration law and are at the forefront of key issues and trends in American immigration law and regulations.
+            <Text as="p" size="sm" color="white" className="opacity-90 font-medium">
+              Need guidance for a marriage-based Green Card?
               </Text>
-              <Text as="p" size="sm" color="white" className="opacity-80">
-                Let's discuss the specifics of your case so you understand all your options and know exactly how to reach your goals.
+            <Text as="p" size="sm" color="white" className="opacity-90 font-medium">
+              Facing asylum or humanitarian protection issues?
               </Text>
             </div>
 
-            {/* About Text */}
+          {/* What We Offer */}
             <div className="mb-10 text-gray-200 leading-relaxed">
+            <Text as="p" size="lg" color="white" className="opacity-90 font-semibold mb-4">
+              What We Offer:
+            </Text>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 mt-1">✅</span>
+                <Text as="p" size="sm" color="white" className="opacity-80">
+                  Free WhatsApp intake with trained specialists
+                </Text>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 mt-1">✅</span>
+                <Text as="p" size="sm" color="white" className="opacity-80">
+                  Honest assessment of your immigration situation
+                </Text>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 mt-1">✅</span>
+                <Text as="p" size="sm" color="white" className="opacity-80">
+                  Attorney consultation ($250/hr) after intake
+                </Text>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 mt-1">✅</span>
               <Text as="p" size="sm" color="white" className="opacity-80">
-                Avvocats & Partners is a US-based immigration law firm helping individuals and families secure their future in the United States. Our team specializes in asylum cases and marriage-based green card petitions, offering personalized, compassionate, and result-driven legal support to Indian, South Asian, and Hispanic communities.
+                  Nationwide service in high Indian-population metro areas
+                </Text>
+              </li>
+            </ul>
+            <Text as="p" size="sm" color="white" className="opacity-90 mt-6 italic">
+              We guide you step-by-step. No false promises – every solution is legally sound.
               </Text>
             </div>
 
             {/* CTA Button */}
             <Button
               as="link"
-              href="#contact-us"
+              href="https://wa.me/13105000780"
               variant="primary"
               size="large"
-              onClick={(e?: React.MouseEvent<HTMLElement>) => {
-                e?.preventDefault();
-                const element = document.getElementById("contact-us");
-                if (element) {
-                  const headerOffset = 80;
-                  const elementPosition = element.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth",
-                  });
-                }
-              }}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              SET UP YOUR CASE EVALUATION
+              <FaWhatsapp className="w-6 h-6" />
+              Start Free WhatsApp Intake
             </Button>
           </div>
 
