@@ -1,98 +1,140 @@
+"use client";
+
+import { Button, Text } from "@/components/common";
+import { FaChevronLeft, FaChevronRight, FaArrowRight, FaStar } from "react-icons/fa";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
-import SectionHeading from "@/components/sectionHeading/SectionHeading";
 
 export default function Testimonials() {
   const testimonials = [
     {
-      quote:
-        "I messaged on WhatsApp and the intake specialist guided me clearly. Attorney consultation was precise and professional.",
-      name: "Raj",
-      location: "CA",
-      date: "",
+      name: "Mareike Ferdinand",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
     },
     {
-      quote:
-        "Overstayed B1/B2 and unsure of my options. WhatsApp intake was easy, and attorney prepared my case perfectly.",
-      name: "Priya",
-      location: "NY",
-      date: "",
+      name: "Hae-ri Bok-soon",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
     },
     {
-      quote:
-        "The marriage Green Card process was overwhelming. WhatsApp intake helped me organize everything before attorney consultation.",
-      name: "Anjali",
-      location: "TX",
-      date: "",
+      name: "Bastian Leopold",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
     },
   ];
 
-  return (
-    <section id="testimonials" className="relative py-20 sm:py-24 lg:py-28 
-    overflow-hidden scroll-mt-20">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
-          alt="Office background"
-          fill
-          className="object-cover"
-          priority={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/85 via-blue-900/85 to-slate-900/85 backdrop-blur-sm" />
-      </div>
+  const testimonialText =
+    "I was using Avvocats Law's services during my EB-2 NIW process. The Team was very professional and my petition was approved. I highly recommend their services.";
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="text-center mb-16 sm:mb-20">
-          <SectionHeading
-            as="h2"
-            className="text-4xl md:text-5xl text-white mb-6 uppercase tracking-wide max-w-3xl mx-auto"
-          >
-            Realistic Testimonials / Social Proof
-          </SectionHeading>
+  const nextTestimonial = () => {
+    // Future carousel functionality
+  };
+
+  const prevTestimonial = () => {
+    // Future carousel functionality
+  };
+  return (
+    <section
+      id="testimonials"
+      className="bg-[#f5f5f0] py-16 sm:py-20 lg:py-24 scroll-mt-20"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="md:text-center mb-12 text-start">
+          <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
+            TESTIMONIALS
+          </p>
+          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
+            What Our Clients Say
+          </h2>
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+            Discover how Avvocats has helped clients navigate the visa process
+            and read their success stories.
+          </p>
+
+          {/* CTA Button */}
+          <div className="mb-12">
+            <Button
+              as="link"
+              href="#contact"
+              variant="primary"
+              size="large"
+              className="bg-secondary-500 hover:bg-secondary-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+            >
+              Request a free consultation
+              <FaArrowRight className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
 
-        {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-white p-8 shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 flex flex-col transform hover:-translate-y-2 border-2 border-transparent hover:border-orange-500/30"
-            >
-              {/* Quote */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-8 italic">
-                "{testimonial.quote}"
-              </p>
+        {/* Testimonials Carousel */}
+        <div className="relative max-w-6xl mx-auto mb-12">
+          {/* Navigation Arrows - Hidden on mobile */}
+          <button
+            onClick={prevTestimonial}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-gray-300 hover:bg-gray-400 rounded-lg items-center justify-center text-gray-700 transition-all duration-300 shadow-md -ml-6"
+            aria-label="Previous testimonial"
+          >
+            <FaChevronLeft className="w-5 h-5" />
+          </button>
 
-              {/* Star Rating */}
-              <div className="flex justify-center gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className="w-6 h-6 text-yellow-400" />
-                ))}
-              </div>
-              {/* Attribution */}
-              <div className="text-center pt-6 border-t-2 border-gray-100">
-                <p className="text-gray-900 font-bold text-lg sm:text-xl">
-                  {testimonial.name}
+          <button
+            onClick={nextTestimonial}
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-gray-300 hover:bg-gray-400 rounded-lg items-center justify-center text-gray-700 transition-all duration-300 shadow-md -mr-6"
+            aria-label="Next testimonial"
+          >
+            <FaChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Testimonial Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 sm:px-6 md:px-12">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                {/* Star Rating */}
+                <div className="flex justify-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className="w-5 h-5 text-yellow-400" />
+                  ))}
+                </div>
+
+                {/* Testimonial Text */}
+                <p className="text-gray-700 text-base leading-relaxed mb-6 text-center">
+                  {testimonialText}
                 </p>
-                <p className="text-gray-600 text-sm sm:text-base mt-2">
-                  {testimonial.location}
-                </p>
-                {testimonial.date && (
-                  <p className="text-gray-500 text-sm mt-1">
-                    {testimonial.date}
-                  </p>
-                )}
+
+                {/* Client Info */}
+                <div className="flex items-center gap-4 justify-center">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-gray-900 font-bold text-base">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      Client of Avvocats Law
+                    </p>
+                  </div>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
 
-
-            </div>
-          ))}
+        {/* Disclaimer */}
+        <div className="text-center">
+          <Text
+            as="p"
+            size="sm"
+            className="text-gray-500 text-xs"
+          >
+            *Prior results do not guarantee future outcomes.
+          </Text>
         </div>
       </div>
     </section>

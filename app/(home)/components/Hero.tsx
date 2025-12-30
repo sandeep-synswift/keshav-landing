@@ -1,116 +1,158 @@
 "use client";
 
 import { Button, Text } from "@/components/common";
-import { FaWhatsapp, FaPhone, FaShieldAlt, FaMapMarkerAlt } from "react-icons/fa";
-import SectionHeading from "@/components/sectionHeading/SectionHeading";
+import {
+  FaCheck,
+  FaChevronLeft,
+  FaChevronRight,
+  FaArrowRight,
+} from "react-icons/fa";
+import Image from "next/image";
 
 export default function Hero() {
+  const statistics = [
+    { value: "95%", label: "Historical approval rate*" },
+    { value: "12+ Years", label: "Average years of experience**" },
+    { value: "Exceptional Clients", label: "Total cases filed***" },
+    { value: "100+ 5-Star Reviews", label: "Client satisfaction" },
+  ];
+
+  // Carousel navigation functions (for future use if needed)
+  const nextStat = () => {
+    // Future carousel functionality
+  };
+
+  const prevStat = () => {
+    // Future carousel functionality
+  };
+
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
-      {/* Background Image Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80')",
-        }}
-      />
-
-      {/* Animated Gradient Overlay */}
-      <div className="absolute inset-0 from-black/70 via-black/60 to-black/70" />
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/10 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 blur-3xl animate-pulse delay-1000"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Main Headline */}
-          <SectionHeading
-            as="h1"
-            className="text-4xl md:text-5xl text-white mb-1 leading-tight drop-shadow-2xl animate-fade-in max-w-4xl mx-auto"
+    <>
+      {/* Top Hero Section */}
+      <section
+        id="hero"
+        className="flex flex-col items-center justify-between overflow-hidden bg-primary-500 py-10"
+      >
+        <div className="relative min-w-6xl mx-auto ">
+          <div className="absolute inset-0 bg-primary-500/40" />
+          <div
+            className="px-4 py-10 "
+            style={{
+              backgroundImage: "url('/assets/photos/hero/heroBanner.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            Overstayed, Need Marriage Green Card, or Seeking Asylum? Start a Confidential WhatsApp Intake Today.
-          </SectionHeading>
+            <div className="w-full px-4 ">
+              <h1 className="text-xl md:text-3xl font-bold text-white mb-4 leading-tight text-left">
+                A Modern Immigration Law Firm
+              </h1>
 
-          {/* Subheadline */}
-          <Text
-            as="p"
-            size="base"
-            color="white"
-            className="mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg mt-8"
-          >
-            Trusted Immigration Attorneys Guiding Indian Nationals in the U.S. – Step by Step, Safely, and Ethically.
-          </Text>
+              {/* Subheading */}
+              <p className="text-lg text-white mb-4 leading-relaxed max-w-3xl text-left">
+                We combine experienced legal talent with cutting-edge technology
+                to drive superior outcomes for you.
+              </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16">
-            <Button
-              as="link"
-              href="https://wa.me/13105000780"
-              variant="primary"
-              size="large"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center shadow-lg hover:shadow-xl transform hover:scale-105 gap-3"
-            >
-              <FaWhatsapp className="w-6 h-6" />
-              Message Us – Free Intake
-            </Button>
-            <Button
-              as="link"
-              href="tel:+13104556492"
-              variant="whiteOutline"
-              size="large"
-              className="w-full sm:w-auto gap-3 shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              <FaPhone className="w-6 h-6" />
-              Call Intake Specialist Now
-            </Button>
-          </div>
-          
-          {/* Disclaimer */}
-          <Text
-            as="p"
-            size="sm"
-            color="white"
-            className="max-w-2xl mx-auto text-center opacity-75 italic"
-          >
-            No legal advice here. Attorney consultation scheduled after intake.
-          </Text>
+              {/* Features List */}
+              <ul className="space-y-1 mb-10 text-left">
+                {[
+                  "Visa approved or 100% refund available",
+                  "Assistance in evidence development (learn more)",
+                  "Ex-USCIS Officer review before filing*",
+                  "Live case tracking and easy attorney messaging",
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start gap-1 text-white">
+                    <FaCheck className="w-5 h-5 text-green-500 mt-1 shrink-0" />
+                    <span className="text-base text-white">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-          {/* Trust Icons */}
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-10 md:gap-14 pt-12 border-t border-white/20">
-            {/* USCIS Logo Placeholder */}
-            <div className="flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300 group">
-              <div className="w-16 h-16 bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                <span className="text-sm font-bold text-orange-400">USCIS</span>
+              {/* CTA Button */}
+              <div className="text-left">
+                <Button
+                  as="link"
+                  href="#contact"
+                  variant="primary"
+                  size="large"
+                  rounded="md"
+                  className="bg-secondary-500 hover:bg-secondary-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+                >
+                  Request a free consultation
+                  <FaArrowRight className="w-5 h-5" />
+                </Button>
               </div>
-              <Text size="sm" color="white" className="font-semibold">USCIS Certified</Text>
-            </div>
 
-            {/* Licensed Immigration Attorneys */}
-            <div className="flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300 group">
-              <div className="w-14 h-14 bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                <FaShieldAlt className="w-6 h-6 text-orange-400" />
-              </div>
-              <Text size="sm" color="white" className="font-semibold">Licensed Immigration Attorneys</Text>
-            </div>
-
-            {/* Serving California */}
-            <div className="flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300 group">
-              <div className="w-14 h-14 bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                <FaMapMarkerAlt className="w-6 h-6 text-orange-400" />
-              </div>
-              <Text size="sm" color="white" className="font-semibold">Serving California for 15+ Years</Text>
+              {/* Disclaimer */}
+              <p className="text-sm text-white mt-4 text-left">
+                * Read terms and conditions here. Only available for select
+                plans.
+              </p>
             </div>
           </div>
         </div>
-      </div>
 
-    </section>
+        {/* Statistics Carousel Section */}
+        <div className="flex flex-start justify-start text-white">
+          <div className=" px-4 sm:px-6 lg:px-8">
+            {/* Carousel Container */}
+            <div className="relative max-w-6xl mx-auto">
+              {/* Navigation Arrows - Hidden on mobile */}
+              <button
+                onClick={prevStat}
+                className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-gray-700 hover:bg-gray-600 rounded-full items-center justify-center text-white transition-all duration-300 shadow-lg -ml-6"
+                aria-label="Previous statistic"
+              >
+                <FaChevronLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={nextStat}
+                className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-gray-700 hover:bg-gray-600 rounded-full items-center justify-center text-white transition-all duration-300 shadow-lg -mr-6"
+                aria-label="Next statistic"
+              >
+                <FaChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Statistics Grid - Show all cards */}
+              <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 hidden md:grid">
+                {statistics.map((stat, index) => (
+                  <div
+                    key={index}
+                    className="hover:bg-white/10 p-4 rounded-lg text-center h-28 sm:h-32 items-center justify-center flex flex-col"
+                  >
+                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs sm:text-sm text-white">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Disclaimers */}
+            <div className="max-w-6xl mx-auto mt-4">
+              <Text
+                as="p"
+                size="sm"
+                className="text-white text-xs leading-relaxed"
+              >
+                *Historical approval rates across all visa types and include
+                cases handled by Avvocats attorneys and lawyers in connection
+                with their work at Avvocats and their current and prior law
+                firms for O-1, EB-1 and EB-2 NIW. Past results do not guarantee
+                future outcomes. **Average years of experience of all Avvocats
+                lawyers as of August 31, 2025 ***Total cases filed provided by
+                Avvocats lawyers in connection with cases handled with Avvocats
+                and lawyer’s prior firms.
+              </Text>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
-

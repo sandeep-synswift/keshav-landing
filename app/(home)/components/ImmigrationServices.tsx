@@ -1,123 +1,130 @@
 "use client";
 
+import { Button } from "@/components/common";
+import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
-import Image from "next/image";
-import { FaWhatsapp } from "react-icons/fa";
-import SectionHeading from "@/components/sectionHeading/SectionHeading";
+import { FaArrowUpRightDots } from "react-icons/fa6";
 
 export default function ImmigrationServices() {
-  const services = [
+  const visaCategories = [
     {
-      title: "Marriage-Based Green Card",
-      description: [
-        "Adjustment of Status (I-130 + I-485)",
-        "Overstay & work authorization considerations",
-        "Interview preparation and RFEs"
+      mainTitle: "Work",
+      subTitle: "Visa",
+      description: "All employment and work visas",
+      visas: [
+        "O-1 Visa",
+        "H-1B Visa",
+        "TN Visa",
+        "E-1 Visa",
+        "E-2 Visa",
+        "E-3 Visa",
+        "L-1 Visa",
+        "P-1 Visa",
+        "R-1 Visa",
+        "J-1 Visa",
       ],
-      image: "/assets/photos/our-services/marriage-based green-ard.png",
     },
     {
-      title: "B1/B2 Overstay / Extension / Change of Status",
-      description: [
-        "Legal assessment of overstay risks",
-        "Extension or change of status options",
-        "Protection against unlawful presence bars"
+      mainTitle: "Employment",
+      subTitle: "Green Cards",
+      description: "Immigrant visas / Green Cards",
+      visas: [
+        "EB-1 Visa",
+        "EB-2 Visa (NIW)",
+        "EB-2 Visa (PERM)",
+        "EB-3 Visa (PERM)",
+        "EB-5 Visa (Investors)",
       ],
-      image: "/assets/photos/our-services/asylum-services.png",
     },
     {
-      title: "Asylum & Humanitarian Protection",
-      subtitle: "(Selective Intake Only)",
-      description: [
-        "Affirmative and defensive asylum cases",
-        "One-year filing deadline assessment",
-        "Country condition documentation",
-        "Credibility and strategy evaluation"
+      mainTitle: "Family",
+      subTitle: "Green Cards",
+      description: "Family-based immigration",
+      visas: [
+        "IR Green Card",
+        "ASYLUM PETITION",
+        "F1 Green Card",
+        "F2A Green Card",
+        "F2B Green Card",
+        "F3 Green Card",
+        "F4 Green Card",
+        "Marriage Green Card",
+        'K-1 "Fiancé" Visa',
       ],
-      image: "/assets/photos/our-services/asylum-services.png",
     },
   ];
 
   return (
-    <section id="practice-areas" className="bg-white py-20 sm:py-24 lg:py-28 scroll-mt-20">
+    <section
+      id="practice-areas"
+      className="bg-[#f8f8f8] py-16 sm:py-20 lg:py-24 scroll-mt-20"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="text-center mb-16 sm:mb-20">
-          <SectionHeading
-            as="h2"
-            className="text-4xl md:text-5xl text-gray-900 mb-6 leading-tight max-w-3xl mx-auto"
-          >
-            Services We Specialize In
-          </SectionHeading>
+        {/* Header Section */}
+        <div className="md:text-center mb-12 text-start">
+          <p className="text-sm uppercase tracking-wider text-gray-500 mb-2">
+            JOURNEY TO THE US
+          </p>
+          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
+            We Handle All Types of Major U.S. Visas
+          </h2>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            Our lawyers are experienced in all major visa types to the US, from
+            work to extraordinary ability and family green cards.
+          </p>
         </div>
 
-        {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
-          {services.map((service, index) => (
-            <Link
+        {/* Visa Categories Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+          {visaCategories.map((category, index) => (
+            <div
               key={index}
-              href="#contact-us"
-              onClick={(e) => {
-                e.preventDefault();
-                const element = document.getElementById("contact-us");
-                if (element) {
-                  const headerOffset = 80;
-                  const elementPosition = element.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth",
-                  });
-                }
-              }}
-              className="group bg-white overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+              className="bg-white rounded-lg shadow-md overflow-hidden"
             >
-              {/* Service Image - fills entire top area */}
-              <div className="relative w-full h-72 sm:h-80 md:h-96 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  priority={index === 0}
-                />
-                {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-300"></div> */}
+              {/* Top Dark Header Bar */}
+              <div className="bg-[#1a1a1a] px-6 py-4 rounded-t-lg">
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {category.mainTitle}
+                </h3>
+                <p className="text-sm text-white/90">{category.subTitle}</p>
               </div>
 
-              {/* Service Title and Description - directly below image, centered */}
-              <div className="py-8 px-6 text-center from-white to-gray-50">
-                <h3 className="text-xl font-normal text-gray-900 group-hover:text-orange-600 transition-colors mb-2">
-                  {service.title}
-                </h3>
-                {service.subtitle && (
-                  <p className="text-sm text-gray-500 mb-4 italic">{service.subtitle}</p>
-                )}
-                {service.description && (
-                  <ul className="mt-4 text-left space-y-2">
-                    {service.description.map((item, idx) => (
-                      <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              {/* Mid-Level Dark Bar */}
+              <div className="bg-[#2c2c2c] px-6 py-3">
+                <p className="text-base text-white">{category.description}</p>
               </div>
-            </Link>
+
+              {/* Visa List */}
+              <div className="px-6 py-4">
+                {category.visas.map((visa, visaIndex) => (
+                  <Link
+                    key={visaIndex}
+                    href="#contact"
+                    className="flex items-center justify-between py-3 border-b border-gray-200 last:border-b-0 hover:bg-gray-50 transition-colors group"
+                  >
+                    <span className="text-gray-900 text-base group-hover:text-secondary-500 transition-colors">
+                      {visa}
+                    </span>
+                    <FaArrowRight className="w-4 h-4 text-gray-600 group-hover:text-secondary-500 transition-colors rotate-315" />
+                  </Link>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
-        
-        {/* CTA after services */}
-        <div className="text-center mt-12">
-          <Link
-            href="https://wa.me/13105000780"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold"
+
+        {/* CTA Button */}
+        <div className="text-center">
+          <Button
+            as="link"
+            href="#contact"
+            variant="primary"
+            size="large"
+            className="bg-secondary-500 hover:bg-secondary-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
           >
-            <FaWhatsapp className="w-6 h-6" />
-            Start Free WhatsApp Intake → Immediate Screening
-          </Link>
+            Request a free consultation
+            <FaArrowRight className="w-5 h-5" />
+          </Button>
         </div>
       </div>
     </section>

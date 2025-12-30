@@ -1,9 +1,12 @@
 import Hero from "./components/Hero";
 import About from "./components/About";
+import OurAttorneys from "./components/OurAttorneys";
 import ImmigrationServices from "./components/ImmigrationServices";
+import ApprovalRates from "./components/ApprovalRates";
 import HowItWorks from "./components/HowItWorks";
-import WhyChooseUs from "./components/WhyChooseUs";
+import SuccessStories from "./components/SuccessStories";
 import Testimonials from "./components/Testimonials";
+import WhyChooseUs from "./components/WhyChooseUs";
 import FAQ from "./components/FAQ";
 import ServingAreas from "./components/ServingAreas";
 import CTA from "./components/CTA";
@@ -20,16 +23,20 @@ export default function Home() {
       <PrivacyDisclaimerModal />
       <Hero />
       <About />
+      <OurAttorneys />
       <ImmigrationServices />
+      <ApprovalRates />
       <HowItWorks />
-      <WhyChooseUs />
+      <SuccessStories />
       <Testimonials />
+      <CTA />
       <FAQ />
-      <ServingAreas />
+      {/* <WhyChooseUs /> */}
+      {/* <ServingAreas /> */}
       {/* <CTA /> */}
-      <LegalDisclaimer />
+      {/* <LegalDisclaimer />
       <FloatingButtons />
-      <ContactModal />
+      <ContactModal /> */}
     </main>
   );
 }

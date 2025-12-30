@@ -29,27 +29,27 @@ export default function DefaultButton({
   className = '',
   ...props
 }: DefaultButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> | AnchorHTMLAttributes<HTMLAnchorElement>)) {
-  // Border radius options - all set to none (no rounded corners)
+  // Border radius options
   const borderRadius = {
-    none: '',
-    sm: '',
-    default: '',
-    md: '',
-    lg: '',
-    xl: '',
+    none: 'rounded-none',
+    sm: 'rounded-sm',
+    default: 'rounded-md',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
   };
   
   const baseStyles = `font-normal text-base transition-all duration-300 focus:outline-none focus:ring-0 focus:scale-100 relative overflow-hidden group flex items-center justify-center text-center`;
   
   const variants = {
     // Brand color variants
-    primary: 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white',
+    primary: 'bg-secondary-500 hover:bg-secondary-600 text-white',
     secondary: 'bg-gray-900 text-white hover:bg-gray-800',
     
     // Primary variations
-    primarySolid: 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white',
-    primaryOutline: 'border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white',
-    primaryLight: 'bg-orange-400 text-white hover:bg-orange-500',
+    primarySolid: 'bg-secondary-500 hover:bg-secondary-600 text-white',
+    primaryOutline: 'border border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white',
+    primaryLight: 'bg-secondary-400 text-white hover:bg-secondary-500',
     
     // Secondary variations
     secondarySolid: 'bg-gray-900 text-white hover:bg-gray-800',
@@ -57,13 +57,13 @@ export default function DefaultButton({
     secondaryLight: 'bg-gray-800 text-white hover:bg-gray-900',
     
     // Design variants
-    partner: 'bg-transparent text-white border border-white hover:border-orange-500 relative z-10',
-    discover: 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white',
-    whiteOutline: 'bg-transparent text-white border border-white hover:border-orange-500 relative z-10',
+    partner: 'bg-transparent text-white border border-white hover:border-secondary-500 relative z-10',
+    discover: 'bg-secondary-500 hover:bg-secondary-600 text-white',
+    whiteOutline: 'bg-transparent text-white border border-white hover:border-secondary-500 relative z-10',
     
     // Additional utility variants
     outlinedDark: 'bg-gray-900 text-white border border-white hover:bg-gray-800',
-    outlinedPrimary: 'border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white',
+    outlinedPrimary: 'border border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white',
   };
   
   // Override border radius for specific variants
@@ -95,7 +95,7 @@ export default function DefaultButton({
         {/* Left-to-right fill animation for partner and whiteOutline variants */}
         {(variant === 'partner' || variant === 'whiteOutline') && (
           <span 
-            className="absolute inset-0 bg-orange-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"
+            className="absolute inset-0 bg-secondary-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"
             aria-hidden="true"
           />
         )}
@@ -116,7 +116,7 @@ export default function DefaultButton({
       {/* Left-to-right fill animation for partner and whiteOutline variants */}
       {(variant === 'partner' || variant === 'whiteOutline') && (
         <span 
-          className="absolute inset-0 bg-orange-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"
+          className="absolute inset-0 bg-secondary-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"
           aria-hidden="true"
         />
       )}
