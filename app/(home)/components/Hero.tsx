@@ -8,8 +8,10 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import Image from "next/image";
+import { useModal } from "@/contexts/ModalContext";
 
 export default function Hero() {
+  const { openModal } = useModal();
   const statistics = [
     { value: "95%", label: "Historical approval rate*" },
     { value: "12+ Years", label: "Average years of experience**" },
@@ -74,12 +76,12 @@ export default function Hero() {
               {/* CTA Button */}
               <div className="text-left">
                 <Button
-                  as="link"
-                  href="#contact"
+                  type="button"
                   variant="primary"
                   size="large"
                   rounded="md"
                   className="bg-secondary-500 hover:bg-secondary-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+                  onClick={openModal}
                 >
                   Request a free consultation
                   <FaArrowRight className="w-5 h-5" />
