@@ -35,8 +35,8 @@ export default function Home() {
       {/* <ServingAreas /> */}
       {/* <CTA /> */}
       {/* <LegalDisclaimer />
-      <FloatingButtons />
-      <ContactModal /> */}
+      <FloatingButtons /> */}
+      <ContactModal />
     </main>
   );
 }

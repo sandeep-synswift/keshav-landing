@@ -1,28 +1,30 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/common";
 import { useState } from "react";
-import { FaTimes, FaChevronDown, FaArrowRight } from "react-icons/fa";
+import { FaTimes, FaArrowRight } from "react-icons/fa";
 import { useModal } from "@/contexts/ModalContext";
+import DefaultButton from "./defaultButton/DefaultButton";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { openModal } = useModal();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleScrollTo = (sectionId: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollTo = (
+    sectionId: string,
+    e: React.MouseEvent<HTMLAnchorElement>
+  ) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -72,38 +74,13 @@ export default function Header() {
           >
             Team
           </a>
-          <div
-            className="relative"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
+          <a
+            href="#practice-areas"
+            onClick={(e) => handleScrollTo("practice-areas", e)}
+            className="hover:text-gray-300 transition-colors text-sm xl:text-base font-medium cursor-pointer"
           >
-            <a
-              href="#practice-areas"
-              onClick={(e) => handleScrollTo("practice-areas", e)}
-              className="hover:text-gray-300 transition-colors text-sm xl:text-base font-medium cursor-pointer flex items-center gap-1"
-            >
-              Practical Areas
-              <FaChevronDown className="w-3 h-3" />
-            </a>
-            {isDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-[200px]">
-                <a
-                  href="#practice-areas"
-                  onClick={(e) => handleScrollTo("practice-areas", e)}
-                  className="block px-4 py-2 text-gray-900 hover:bg-gray-100 text-sm"
-                >
-                  Immigration Services
-                </a>
-                <a
-                  href="#practice-areas"
-                  onClick={(e) => handleScrollTo("practice-areas", e)}
-                  className="block px-4 py-2 text-gray-900 hover:bg-gray-100 text-sm"
-                >
-                  Visa Types
-                </a>
-              </div>
-            )}
-          </div>
+            Practical Areas
+          </a>
           <a
             href="#contact-us"
             onClick={(e) => handleScrollTo("contact-us", e)}
@@ -115,18 +92,18 @@ export default function Header() {
 
         {/* Desktop CTA Button */}
         <div className="hidden lg:flex items-center shrink-0">
-          <Button
-            as="link"
-            href="#contact"
+          <DefaultButton
+            type="button"
             variant="primary"
             size="medium"
             className="bg-secondary-500 hover:bg-secondary-600 text-white px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+            onClick={openModal}
           >
             Request a free consultation
             <div className="bg-secondary-400 rounded-md p-1.5">
               <FaArrowRight className="w-3 h-3 text-white" />
             </div>
-          </Button>
+          </DefaultButton>
         </div>
 
         {/* Mobile Menu Button */}
@@ -202,21 +179,21 @@ export default function Header() {
               >
                 Contact
               </a>
-              <Button
-                as="link"
-                href="#contact"
+              <DefaultButton
+                type="button"
                 variant="primary"
                 size="medium"
+                className="mt-6 bg-secondary-500 hover:bg-secondary-600 text-white px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 w-full justify-center"
                 onClick={() => {
                   toggleMobileMenu();
+                  openModal();
                 }}
-                className="mt-6 bg-secondary-500 hover:bg-secondary-600 text-white px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 w-full justify-center"
               >
                 Request a free consultation
-                <div className="bg-secondary-400 rounded p-1">
+                <div className="bg-secondary-400 rounded-md p-1.5">
                   <FaArrowRight className="w-3 h-3 text-white" />
                 </div>
-              </Button>
+              </DefaultButton>
             </div>
           </nav>
         </>
