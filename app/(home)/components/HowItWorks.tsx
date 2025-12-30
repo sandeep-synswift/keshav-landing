@@ -1,94 +1,116 @@
+"use client";
+
 import Image from "next/image";
-import { FaWhatsapp } from "react-icons/fa";
-import SectionHeading from "@/components/sectionHeading/SectionHeading";
+import { Button } from "@/components/common";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function HowItWorks() {
   const steps = [
     {
-      image: "/assets/photos/how-work/free-consultation.png",
-      title: "Step 1 – Free WhatsApp Intake",
-      description: [
-        "Send a confidential message",
-        "Answer 5 simple screening questions:",
-        "• Current visa type and expiration date",
-        "• Entry date into the U.S.",
-        "• Reason for contacting us (Marriage GC / Overstay / Asylum)",
-        "• Any past immigration filings or denials?",
-        "• City/state of residence in the U.S."
-      ],
+      number: 1,
+      title: "See If You Qualify (Free Case Evaluation)",
+      description:
+        "Start with our short intake quiz. We'll evaluate the strength of your profile to see if you qualify for our services. If you qualify, you'll move to the next step.",
+      bgColor: "bg-gray-800",
+      textColor: "text-white",
     },
     {
-      image: "/assets/photos/how-work/case-preparation.png",
-      title: "Step 2 – Attorney Consultation ($250/hr)",
-      description: [
-        "Detailed legal analysis",
-        "Step-by-step strategy & filing roadmap"
-      ],
+      number: 2,
+      title: "Meet Your Legal Team",
+      description:
+        "Once qualified, we'll select an attorney for you based on your background and industry. Prefer someone else? We'll do our best to accommodate your preferences — your comfort and trust come first.",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
     },
     {
-      image: "/assets/photos/how-work/representation.png",
-      title: "Step 3 – Safe, Compliant Filing",
-      description: [
-        "Only proceed if intake confirms viability",
-        "All submissions are carefully prepared"
-      ],
+      number: 3,
+      title: "Start Your Case",
+      description:
+        "After formally retaining us, you'll get immediate access to your case portal, where you'll find your checklist, timeline, and tools to upload your initial evidence. You are equipped to dive in — and so are we.",
+      bgColor: "bg-gray-800",
+      textColor: "text-white",
     },
   ];
 
   return (
-    <section className="bg-gray-50 py-20 sm:py-24 lg:py-28">
+    <section className="bg-primary-500 py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="mb-16 sm:mb-20">
-          <SectionHeading
-            as="h2"
-            className="text-4xl md:text-5xl text-gray-900 mb-4 leading-tight max-w-3xl"
-          >
-            How Our WhatsApp-First Process Works
-          </SectionHeading>
+        <div>
+          <p className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+            FROM INTAKE TO APPROVAL
+          </p>
+
+          {/* Main Heading */}
+          <h2 className="text-xl md:text-3xl font-bold text-white mb-4">
+            How Do We Work With You?
+          </h2>
+
+          {/* CTA Button */}
+          <div className="mb-12">
+            <Button
+              as="link"
+              href="#contact"
+              variant="primary"
+              size="large"
+              className="bg-secondary-500 hover:bg-secondary-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-md shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+            >
+              Start the Process
+              <FaArrowRight className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 items-start">
+            {/* Three Steps */}
+            <div className="space-y-4 lg:col-span-2">
+              {steps.map((step, index) => (
+                <div
+                  key={index}
+                  className={`${step.bgColor} rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row gap-4 sm:gap-6`}
+                >
+                  {/* Large Number */}
+                  <div
+                    className={`text-5xl sm:text-6xl md:text-7xl font-bold ${step.textColor} shrink-0`}
+                  >
+                    {step.number}
+                  </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {steps.map((step, index) => (
-            <div key={index} className="flex flex-col group">
-              {/* Icon */}
-              <div className="mb-8 flex justify-center lg:justify-start">
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 transform group-hover:scale-110 transition-transform duration-300">
-                  <Image
-                    src={step.image}
-                    alt={step.title}
-                    fill
-                    className="object-contain"
-                    priority={index < 2}
-                  />
+                  {/* Step Content */}
+                  <div className="flex-1">
+                    <h3 className={`text-lg sm:text-xl font-bold ${step.textColor} mb-2 sm:mb-3`}>
+                      {step.title}
+                    </h3>
+                    <p
+                      className={`text-sm sm:text-base ${step.textColor} ${
+                        step.bgColor === "bg-white"
+                          ? "text-gray-700"
+                          : "text-white/90"
+                      } leading-relaxed`}
+                    >
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
 
-              {/* Title */}
-              <h3 className="text-2xl sm:text-xl font-medium text-gray-900 mb-6 group-hover:text-orange-600 transition-colors">
-                {step.title}
-              </h3>
 
-              {/* Description */}
-              <div className="text-gray-600 text-base sm:text-sm leading-relaxed">
-                {Array.isArray(step.description) ? (
-                  <ul className="space-y-2">
-                    {step.description.map((item, idx) => (
-                      <li key={idx} className={item.startsWith('•') ? 'pl-4' : ''}>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>{step.description}</p>
-                )}
+          {/* Right Side - Image */}
+          <div className="relative w-full h-full">
+            <div className="relative w-full h-full bg-gray-200 rounded-lg overflow-hidden">
+              <Image
+                src="/assets/photos/how-work/howitwork.png"
+                alt="Lady Justice statue"
+                fill
+                className="object-cover"
+              />
+              {/* Disclaimer */}
+              <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/70 text-white text-xs px-2 sm:px-3 py-1 rounded">
+                *Representative image - not actual Manifest lawyer or client
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

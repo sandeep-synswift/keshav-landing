@@ -9,6 +9,32 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit), "Outfit", sans-serif;
+  
+  /* Primary Colors - #121C27 */
+  --color-primary-50: #e8ebed;
+  --color-primary-100: #d1d7db;
+  --color-primary-200: #a3afb7;
+  --color-primary-300: #758793;
+  --color-primary-400: #475f6f;
+  --color-primary-500: #121C27;
+  --color-primary-600: #0e161d;
+  --color-primary-700: #0b1114;
+  --color-primary-800: #080b0e;
+  --color-primary-900: #050608;
+  --color-primary-950: #030405;
+  
+  /* Secondary Colors - #AD8B4E */
+  --color-secondary-50: #f5f1e8;
+  --color-secondary-100: #ebe3d1;
+  --color-secondary-200: #d7c7a3;
+  --color-secondary-300: #c3ab75;
+  --color-secondary-400: #af8f47;
+  --color-secondary-500: #AD8B4E;
+  --color-secondary-600: #8a6f3e;
+  --color-secondary-700: #67532f;
+  --color-secondary-800: #45371f;
+  --color-secondary-900: #221b0f;
+  --color-secondary-950: #110e08;
 }
 
 @media (prefers-color-scheme: dark) {

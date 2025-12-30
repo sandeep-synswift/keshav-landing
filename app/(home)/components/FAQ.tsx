@@ -1,82 +1,143 @@
 "use client";
 
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
-import SectionHeading from "@/components/sectionHeading/SectionHeading";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [activeTab, setActiveTab] = useState<"1st" | "2nd">("1st");
+  const [openIndex, setOpenIndex] = useState<number | null>(2);
 
-  const faqs = [
+  const faqs1st = [
     {
-      question: "How long is the attorney consultation?",
-      answer:
-        "1 hour ($250). Intake via WhatsApp is free.",
+      question: "What areas of law do you specialize in?",
+      answer: "",
     },
     {
-      question: "Do you provide legal advice on WhatsApp?",
-      answer:
-        "No. WhatsApp is strictly for confidential intake.",
+      question: "How much do legal consultations cost?",
+      answer: "",
     },
     {
-      question: "Can I schedule a consultation immediately after intake?",
+      question: "How long will my case take?",
       answer:
-        "Yes. Viable cases are scheduled promptly.",
+        "Timelines vary depending on case nature, court workload, and supporting evidence. We aim for efficient resolution wherever possible.",
+    },
+    {
+      question: "Will my information remain confidential?",
+      answer: "",
+    },
+    {
+      question: "What documents should I bring for my first consultation?",
+      answer: "",
     },
   ];
+
+  const faqs2nd = [
+    {
+      question: "What areas of law do you specialize in?",
+      answer: "",
+    },
+    {
+      question: "How much do legal consultations cost?",
+      answer: "",
+    },
+    {
+      question: "How long will my case take?",
+      answer: "",
+    },
+    {
+      question: "Will my information remain confidential?",
+      answer: "",
+    },
+    {
+      question: "What documents should I bring for my first consultation?",
+      answer: "",
+    },
+  ];
+
+  const currentFaqs = activeTab === "1st" ? faqs1st : faqs2nd;
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-20 sm:py-24 lg:py-28">
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-16 sm:mb-20">
-          <SectionHeading
-            as="h2"
-            className="text-4xl md:text-5xl text-gray-900 mb-6 leading-tight max-w-3xl mx-auto"
+        <div className="md:md:text-center mb-12 text-start text-start">
+          <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
+            FREQUENTLY ASKED QUESTIONS
+          </p>
+          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
+            Clear answers to help you understand
+          </h2>
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            Find quick answers to common legal questions before scheduling a
+            consultation.
+          </p>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex justify-center gap-4 sm:gap-8 mb-8 sm:mb-12">
+          <button
+            onClick={() => {
+              setActiveTab("1st");
+              setOpenIndex(null);
+            }}
+            className={`text-sm sm:text-base font-medium pb-2 transition-colors ${
+              activeTab === "1st"
+                ? "text-gray-900 border-b-2 border-gray-900"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
           >
-            FAQ (Optional but High-Converting)
-          </SectionHeading>
+            1st Case
+          </button>
+          <button
+            onClick={() => {
+              setActiveTab("2nd");
+              setOpenIndex(null);
+            }}
+            className={`text-sm sm:text-base font-medium pb-2 transition-colors ${
+              activeTab === "2nd"
+                ? "text-gray-900 border-b-2 border-gray-900"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            2nd Case
+          </button>
         </div>
 
         {/* FAQ Accordion */}
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
+          <div className="space-y-2">
+            {currentFaqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white shadow-lg hover:shadow-xl overflow-hidden transition-all duration-300 border-2 border-gray-100 hover:border-orange-500/50"
+                className="bg-white border-b border-gray-200"
               >
                 {/* Question Button */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors group"
+                  className="w-full text-left flex items-center justify-between py-3 sm:py-4 hover:text-gray-900 transition-colors group"
                 >
-                  <span className="text-sm md:text-xl font-medium text-gray-900 pr-8 group-hover:text-orange-600 transition-colors">
+                  <span className="text-sm sm:text-base font-medium text-gray-900 pr-4 sm:pr-8">
                     {faq.question}
                   </span>
-                  <FaChevronDown
-                    className={`w-7 h-7 text-gray-600 transition-transform duration-300 group-hover:text-orange-600 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                  />
+                  {openIndex === index ? (
+                    <FaChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 shrink-0" />
+                  ) : (
+                    <FaChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 shrink-0" />
+                  )}
                 </button>
 
                 {/* Answer */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="px-8 pb-6">
-                    <p className="text-gray-600 text-sm sm:text-md leading-relaxed">
+                {openIndex === index && faq.answer && (
+                  <div className="pt-2 pb-4">
+                    <p className="text-gray-700 text-base leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
-                </div>
+                )}
               </div>
             ))}
           </div>
